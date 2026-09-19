@@ -16,7 +16,7 @@ infoprober = 0.1.0
 use infoprober::{parse, Document, Entry, Value, ParseErrorKind};
 ```
 
----
+
 
 ## 1. The info.probe file format
 
@@ -45,7 +45,7 @@ name=demo                         <- optional header line (top level only)
 Rules:
 
 | Rule | Detail |
-|---|---|
+|||
 | Blocks | `:name` … `:end`. The name `end` is reserved. |
 | Entries | `key :value`. Split at the **first** `:`, both sides trimmed, so values may contain colons (`t :12:30:00`). |
 | Keys | Any text without `:`. Spaces inside a key are fine (`my key :x`). Paths like `.config/a.png` are fine. |
@@ -57,7 +57,7 @@ Rules:
 
 The parser is **strict**: a missing `:end`, a missing `}`, or an entry line with no `:` is an error with a line number rather than being skipped silently.
 
----
+
 
 ## 2. Reading
 
@@ -91,7 +91,7 @@ match parse(&src) {
 
 `ParseErrorKind`: `UnexpectedLine`, `MissingColon`, `EmptyKey`, `UnexpectedCloseBrace`, `UnterminatedSection`, `UnterminatedMap`, `TooDeep`. For unterminated blocks, `line` is where the block was **opened**.
 
----
+
 
 ## 3. Looking up values
 
@@ -156,7 +156,7 @@ if let Some(widgets) = doc.get("set", "widgets").and_then(|v| v.as_map()) {
 }
 ```
 
----
+
 
 ## 4. Searching
 
@@ -255,7 +255,7 @@ let is_map        = doc.get("set", "widgets").and_then(|v| v.as_map()).is_some()
 let name = doc.meta.iter().find(|(k, _)| k == "name").map(|(_, v)| &**v);
 ```
 
----
+
 
 ## 5. Writing
 
@@ -376,7 +376,7 @@ assert!(doc.validate().is_err());
 
 It rejects: empty keys; keys containing `:`, a newline, or starting with `//`; values containing a newline or exactly `{`; keys or values with leading/trailing whitespace; block names that are empty, `end`, or contain whitespace.
 
----
+
 
 ## 6. Ownership and lifetimes
 
@@ -394,7 +394,7 @@ fn load(path: &str) -> Result<Document<'static>, Box<dyn std::error::Error>> {
 
 Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed document; the string type is `Cow<str>`.
 
----
+
 
 ## 7. Getting the best speed
 
@@ -406,7 +406,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 - Build with `--release`; the included profile enables LTO and a single codegen unit.
 - Measure on your files: `cargo run --release --example demo path/to/file.probe`.
 
----
+
 
 ## 8. API reference
 
@@ -415,7 +415,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 **`Document`**: fields `meta: Vec<(Str, Str)>`, `sections: Vec<Section>`
 
 | Method | Purpose |
-|---|---|
+|||
 | `new()` | empty document |
 | `section(name)` / `section_mut(name)` | find a block |
 | `section_or_insert(name)` | find a block or create it at the end |
@@ -428,7 +428,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 **`Section`**: fields `name`, `entries: Vec<Entry>`
 
 | Method | Purpose |
-|---|---|
+|||
 | `new(name)` | empty block |
 | `get(key)` / `get_str(key)` / `get_mut(key)` | look up a value (first match) |
 | `set(key, value)` | replace the value if the key exists, else append |
@@ -441,7 +441,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 **`Value`**: `Str(..)` or `Map(Vec<Entry>)`
 
 | Method | Purpose |
-|---|---|
+|||
 | `as_str()` | plain text, or `None` for a map |
 | `as_map()` | nested entries, or `None` for plain text |
 | `as_bool()` | `"true"`/`"false"` |
@@ -451,7 +451,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 
 `Value` converts from `&str`, `String`, `Cow<str>` and `Vec<Entry>`, so `set("k", "v")`, `set("k", string)` and `set("k", vec![...])` all work.
 
----
+
 
 ## 9. Limitations
 
