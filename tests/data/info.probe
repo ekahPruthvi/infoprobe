@@ -1,0 +1,28 @@
+:ver
+    cynageOS :5.1.1
+    capsuleshell :1.4.74
+    shutdownmenu :1.0.0
+    alt :1.2.0
+    octobacillus :1.0.2
+    globalctrl :1.0.0
+    calibrate :1.0.0
+:end
+
+:set
+    startup :default.mp3
+    notification :notiv.mp3
+    dnd :true
+    widgets :{
+        cal   :true
+        sys   :true
+        bat   :true
+        stick :true
+        appd  :true
+    }
+    sticker :/var/lib/cynager/icons/skicker/intro.png
+    walls :{
+        .config/walls/japaneseee.png :eDP-1
+        .config/walls/cuttingmat.png :DP-2
+    }
+    shellout :DP-2
+:end

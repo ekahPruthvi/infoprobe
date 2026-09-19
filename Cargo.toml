@@ -1,0 +1,8 @@
+[package]
+name = "infoprober"
+version = "0.1.0"
+edition = "2024"
+authors = ["ekahPruthvi <ekahpdp@gmail.com>"]
+description = "A fast and simple language (info probe) library"
+
+[dependencies]
