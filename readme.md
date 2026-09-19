@@ -45,7 +45,7 @@ name=demo                         <- optional header line (top level only)
 Rules:
 
 | Rule | Detail |
-|||
+|---|---|
 | Blocks | `:name` … `:end`. The name `end` is reserved. |
 | Entries | `key :value`. Split at the **first** `:`, both sides trimmed, so values may contain colons (`t :12:30:00`). |
 | Keys | Any text without `:`. Spaces inside a key are fine (`my key :x`). Paths like `.config/a.png` are fine. |
