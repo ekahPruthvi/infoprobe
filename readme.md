@@ -415,7 +415,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 **`Document`**: fields `meta: Vec<(Str, Str)>`, `sections: Vec<Section>`
 
 | Method | Purpose |
-|||
+|---|---|
 | `new()` | empty document |
 | `section(name)` / `section_mut(name)` | find a block |
 | `section_or_insert(name)` | find a block or create it at the end |
@@ -428,7 +428,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 **`Section`**: fields `name`, `entries: Vec<Entry>`
 
 | Method | Purpose |
-|||
+|---|---|
 | `new(name)` | empty block |
 | `get(key)` / `get_str(key)` / `get_mut(key)` | look up a value (first match) |
 | `set(key, value)` | replace the value if the key exists, else append |
@@ -441,7 +441,7 @@ Values you insert yourself (`String`s, or `&'static str`) are fine in a borrowed
 **`Value`**: `Str(..)` or `Map(Vec<Entry>)`
 
 | Method | Purpose |
-|||
+|---|---|
 | `as_str()` | plain text, or `None` for a map |
 | `as_map()` | nested entries, or `None` for plain text |
 | `as_bool()` | `"true"`/`"false"` |
