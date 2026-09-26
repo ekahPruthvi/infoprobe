@@ -4,5 +4,14 @@ version = "0.1.0"
 edition = "2024"
 authors = ["ekahPruthvi <ekahpdp@gmail.com>"]
 description = "A fast and simple language (info probe) library"
+license = "GPL-3.0"
+repository = "https://github.com/ekahPruthvi/infoprobe"
+readme = "readme.md"
+keywords = ["probe", "ast", "writer", "document"] # Up to 5 keywords
+categories = [
+    "parsing",
+    "text-processing",
+    "encoding"
+]
 
 [dependencies]
